@@ -1,1 +1,2 @@
 rootProject.name = 'cab-aggregator-app'
+include 'passenger-service'
