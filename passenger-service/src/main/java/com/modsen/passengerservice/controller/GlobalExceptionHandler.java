@@ -3,7 +3,6 @@ package com.modsen.passengerservice.controller;
 import com.modsen.passengerservice.dto.error.ErrorResponse;
 import com.modsen.passengerservice.exceptions.PhoneAlreadyExistsException;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -17,12 +16,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
-@RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse handeEntityNotFoundException(EntityNotFoundException ex) {
+    public ErrorResponse handleEntityNotFoundException(EntityNotFoundException ex) {
         val exceptionId = UUID.randomUUID().toString();
         val message = ex.getMessage();
 
@@ -36,7 +34,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(PhoneAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handeEntityAlreadyExistException(PhoneAlreadyExistsException ex) {
+    public ErrorResponse handleEntityAlreadyExistException(PhoneAlreadyExistsException ex) {
         val exceptionId = UUID.randomUUID().toString();
         val message = ex.getMessage();
 

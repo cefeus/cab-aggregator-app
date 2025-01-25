@@ -7,6 +7,6 @@ import static com.modsen.passengerservice.util.RegexpConstants.*;
 public record PhoneUpdateRequest(
         @Pattern(regexp = PHONE_REGEXP,
                 message = "phone.incorrect.format")
-        String phone
+        String phoneNumber
 ) {
 }

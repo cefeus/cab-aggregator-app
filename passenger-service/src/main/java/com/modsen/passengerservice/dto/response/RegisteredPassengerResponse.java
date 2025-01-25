@@ -8,8 +8,8 @@ public record RegisteredPassengerResponse(
         Long id,
         String firstName,
         String lastName,
-        String phone,
-        Double rating,
+        String phoneNumber,
+        String rating,
         PaymentType paymentType
 ) {
 }

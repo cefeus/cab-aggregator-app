@@ -31,7 +31,7 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     @Transactional
     public RegisteredPassengerResponse register(PassengerRegistrationRequest dto) {
-        if (!repository.existsByPhoneNumberAndIsActiveIsTrue(dto.phoneNumber()))
+        if (repository.existsByPhoneNumberAndIsActiveIsTrue(dto.phoneNumber()))
             throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_NUMBER_EXISTS, dto.phoneNumber()));
         var passenger = mapper.toPassenger(dto);
         repository.save(passenger);
@@ -61,19 +61,22 @@ public class PassengerServiceImpl implements PassengerService {
     @Transactional
     public PassengerResponse update(Long id, PassengerRequest dto) {
         var passenger = getOrThrow(id);
-        if (!repository.existsByEmailAndIsActiveIsTrue(dto.email()))
-            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_EMAIL_EXISTS, dto.email()));
+        var email = dto.email();
+        if (repository.existsByEmailAndIsActiveIsTrue(email))
+            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_EMAIL_EXISTS, email));
         mapper.updatePassenger(dto, passenger);
         return mapper.toResponse(passenger);
     }
 
     @Override
+    @Transactional
     public PassengerResponse updatePhone(Long id, PhoneUpdateRequest dto) {
         var passenger = getOrThrow(id);
-        if (!repository.existsByPhoneNumberAndIsActiveIsTrue(dto.phone()))
-            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_NUMBER_EXISTS, dto.phone()));
-        passenger.setPhoneNumber(dto.phone());
-        return null;
+        var phone = dto.phoneNumber();
+        if (repository.existsByPhoneNumberAndIsActiveIsTrue(phone))
+            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_NUMBER_EXISTS, phone));
+        passenger.setPhoneNumber(phone);
+        return mapper.toResponse(passenger);
     }
 
     @Override
@@ -82,14 +85,16 @@ public class PassengerServiceImpl implements PassengerService {
         return mapper.toResponse(passenger);
     }
 
+    @Transactional
     public void setPaymentTypeCard(Long id) {
         var passenger = getOrThrow(id);
-        repository.updatePaymentType(PaymentType.CARD.name(), id);
+        passenger.setPaymentType(PaymentType.CARD);
     }
 
+    @Transactional
     public void setPaymentTypeCash(Long id) {
         var passenger = getOrThrow(id);
-        repository.updatePaymentType(PaymentType.CASH.name(), id);
+        passenger.setPaymentType(PaymentType.CASH);
     }
 
     private Passenger getOrThrow(Long id) {

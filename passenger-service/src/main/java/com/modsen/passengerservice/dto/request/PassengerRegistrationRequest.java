@@ -14,9 +14,9 @@ public record PassengerRegistrationRequest(
         String phoneNumber,
         @NotBlank(message = "firstName.not.blank")
         @Size(min = 2, max = 100, message = "firstName.size")
-        String firstname,
+        String firstName,
         @NotBlank(message = "lastName.not.blank")
         @Size(min = 2, max = 100, message = "lastName.size")
-        String lastname
+        String lastName
 ) {
 }

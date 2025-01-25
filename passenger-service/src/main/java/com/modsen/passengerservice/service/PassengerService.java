@@ -10,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface PassengerService {
 
-    //PassengerResponse updatePhoneNumber(String number);
-
     void delete(Long id);
 
     PassengersPagedResponse getAll(Pageable pageable);
@@ -26,5 +24,6 @@ public interface PassengerService {
     RegisteredPassengerResponse register(PassengerRegistrationRequest dto);
 
     void setPaymentTypeCash(Long id);
+
     void setPaymentTypeCard(Long id);
 }

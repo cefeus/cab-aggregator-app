@@ -7,8 +7,8 @@ import lombok.Builder;
 public record PassengerResponse(
         Long id,
         String phoneNumber,
-        String firstname,
-        String lastname,
+        String firstName,
+        String lastName,
         String rating,
         PaymentType paymentType,
         String email
