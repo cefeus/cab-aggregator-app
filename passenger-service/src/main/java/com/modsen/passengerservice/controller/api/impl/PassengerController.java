@@ -1,5 +1,6 @@
 package com.modsen.passengerservice.controller.api.impl;
 
+import com.modsen.passengerservice.controller.api.PassengerApiEndpoints;
 import com.modsen.passengerservice.dto.request.PassengerRegistrationRequest;
 import com.modsen.passengerservice.dto.request.PassengerRequest;
 import com.modsen.passengerservice.dto.request.PhoneUpdateRequest;

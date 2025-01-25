@@ -1,4 +1,4 @@
-package com.modsen.passengerservice.controller.api.impl;
+package com.modsen.passengerservice.controller.api;
 
 import com.modsen.passengerservice.dto.request.PassengerRegistrationRequest;
 import com.modsen.passengerservice.dto.request.PassengerRequest;
