@@ -32,7 +32,7 @@ public class PassengerServiceImpl implements PassengerService {
     @Transactional
     public RegisteredPassengerResponse register(PassengerRegistrationRequest dto) {
         if (repository.existsByPhoneNumberAndIsActiveIsTrue(dto.phoneNumber()))
-            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_NUMBER_EXISTS, dto.phoneNumber()));
+            throw new PhoneAlreadyExistsException(PASSENGER_WITH_NUMBER_EXISTS.formatted(dto.phoneNumber()));
         var passenger = mapper.toPassenger(dto);
         repository.save(passenger);
         return mapper.toRegistered(passenger);
@@ -63,7 +63,7 @@ public class PassengerServiceImpl implements PassengerService {
         var passenger = getOrThrow(id);
         var email = dto.email();
         if (repository.existsByEmailAndIsActiveIsTrue(email))
-            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_EMAIL_EXISTS, email));
+            throw new PhoneAlreadyExistsException(PASSENGER_WITH_EMAIL_EXISTS.formatted(email));
         mapper.updatePassenger(dto, passenger);
         return mapper.toResponse(passenger);
     }
@@ -74,7 +74,7 @@ public class PassengerServiceImpl implements PassengerService {
         var passenger = getOrThrow(id);
         var phone = dto.phoneNumber();
         if (repository.existsByPhoneNumberAndIsActiveIsTrue(phone))
-            throw new PhoneAlreadyExistsException(String.format(PASSENGER_WITH_NUMBER_EXISTS, phone));
+            throw new PhoneAlreadyExistsException(PASSENGER_WITH_NUMBER_EXISTS.formatted(phone));
         passenger.setPhoneNumber(phone);
         return mapper.toResponse(passenger);
     }
@@ -99,7 +99,7 @@ public class PassengerServiceImpl implements PassengerService {
 
     private Passenger getOrThrow(Long id) {
         return repository.findByIdAndIsActiveIsTrue(id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format(PASSENGER_NOT_FOUND_BY_ID, id)));
+                .orElseThrow(() -> new EntityNotFoundException(PASSENGER_NOT_FOUND_BY_ID.formatted(id)));
     }
 
     private PassengersPagedResponse processPage(Page<Passenger> passengers) {

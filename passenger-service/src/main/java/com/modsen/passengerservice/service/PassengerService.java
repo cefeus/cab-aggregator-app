@@ -13,6 +13,7 @@ public interface PassengerService {
     void delete(Long id);
 
     PassengersPagedResponse getAll(Pageable pageable);
+
     PassengersPagedResponse getAllActive(Pageable pageable);
 
     PassengerResponse update(Long id, PassengerRequest dto);
