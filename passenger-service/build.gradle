@@ -35,6 +35,7 @@ dependencies {
     implementation "org.mapstruct:mapstruct:${versions.mapstruct}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${versions.mapstruct}"
     implementation 'org.liquibase:liquibase-core'
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${versions.springdocopenapi}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

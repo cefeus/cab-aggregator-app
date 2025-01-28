@@ -2,8 +2,6 @@ package com.modsen.passengerservice.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -49,9 +47,8 @@ public class Passenger {
     private String email;
     @Column(name="rating")
     private String rating;
-    @Enumerated(EnumType.STRING)
     @Column(name ="payment_type")
-    private PaymentType paymentType;
+    private int paymentType;
     @Column(name = "is_active")
     Boolean isActive;
     @CreationTimestamp
@@ -61,4 +58,3 @@ public class Passenger {
     @Column(name = "modified_at")
     private Instant modifiedAt;
 }
-

@@ -30,7 +30,7 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     @Transactional
-    public RegisteredPassengerResponse register(PassengerRegistrationRequest dto) {
+    public RegisteredPassengerResponse createPassenger(PassengerRegistrationRequest dto) {
         if (repository.existsByPhoneNumberAndIsActiveIsTrue(dto.phoneNumber()))
             throw new PhoneAlreadyExistsException(PASSENGER_WITH_NUMBER_EXISTS.formatted(dto.phoneNumber()));
         var passenger = mapper.toPassenger(dto);
@@ -88,13 +88,13 @@ public class PassengerServiceImpl implements PassengerService {
     @Transactional
     public void setPaymentTypeCard(Long id) {
         var passenger = getOrThrow(id);
-        passenger.setPaymentType(PaymentType.CARD);
+        passenger.setPaymentType(PaymentType.CARD.value());
     }
 
     @Transactional
     public void setPaymentTypeCash(Long id) {
         var passenger = getOrThrow(id);
-        passenger.setPaymentType(PaymentType.CASH);
+        passenger.setPaymentType(PaymentType.CASH.value());
     }
 
     private Passenger getOrThrow(Long id) {

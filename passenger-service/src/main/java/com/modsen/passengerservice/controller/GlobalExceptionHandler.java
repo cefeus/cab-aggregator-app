@@ -32,9 +32,9 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
-    @ExceptionHandler(PhoneAlreadyExistsException.class)
+    @ExceptionHandler({PhoneAlreadyExistsException.class, IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleEntityAlreadyExistException(PhoneAlreadyExistsException ex) {
+    public ErrorResponse handleEntityAlreadyExistsOrIllegalArgumentException(RuntimeException ex) {
         val exceptionId = UUID.randomUUID().toString();
         val message = ex.getMessage();
 
@@ -54,20 +54,6 @@ public class GlobalExceptionHandler {
                 .stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.joining(" | "));
-
-        return ErrorResponse.builder()
-                .id(exceptionId)
-                .message(message)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
-                .timestamp(LocalDateTime.now())
-                .build();
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleIllegalArgumentException(IllegalArgumentException ex) {
-        val exceptionId = UUID.randomUUID().toString();
-        val message = ex.getMessage();
 
         return ErrorResponse.builder()
                 .id(exceptionId)

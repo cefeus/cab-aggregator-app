@@ -22,11 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.modsen.passengerservice.util.ApiRoutesConstants.*;
-
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(PASSENGERS_API_V1)
+@RequestMapping("/api/v1/passengers")
 public class PassengerController implements PassengerApiEndpoints {
 
     private final PassengerService service;
@@ -34,15 +32,15 @@ public class PassengerController implements PassengerApiEndpoints {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public RegisteredPassengerResponse createPassenger(@RequestBody PassengerRegistrationRequest dto) {
-        return service.register(dto);
+        return service.createPassenger(dto);
     }
 
-    @PutMapping(UPDATE_ENDPOINT)
+    @PutMapping("/{id}")
     public PassengerResponse updatePassenger(@PathVariable Long id, @RequestBody PassengerRequest dto) {
         return service.update(id, dto);
     }
 
-    @PutMapping(UPDATE_PHONE_ENDPOINT)
+    @PutMapping("/phone/{id}")
     public PassengerResponse updatePassengerPhone(@PathVariable Long id, @RequestBody PhoneUpdateRequest dto) {
         return service.updatePhone(id, dto);
     }
@@ -52,29 +50,29 @@ public class PassengerController implements PassengerApiEndpoints {
         return service.getAllActive(pageable);
     }
 
-    @GetMapping(FIND_ALL_ENDPOINT)
+    @GetMapping("/admin/all")
     public PassengersPagedResponse findAll(Pageable pageable) {
         return service.getAll(pageable);
     }
 
-    @GetMapping(FIND_BY_ID_ENDPOINT)
+    @GetMapping("/{id}")
     public  PassengerResponse findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
-    @DeleteMapping(DELETE_ENDPOINT)
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 
-    @PatchMapping(SET_PAYMENT_CASH_ENDPOINT)
+    @PatchMapping("/cash/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void setPaymentType(@PathVariable Long id) {
+    public void setPaymentTypeCash(@PathVariable Long id) {
         service.setPaymentTypeCash(id);
     }
 
-    @PatchMapping(SET_PAYMENT_CARD_ENDPOINT)
+    @PatchMapping("/card/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void setPaymentTypeCard(@PathVariable Long id) {
         service.setPaymentTypeCard(id);

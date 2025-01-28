@@ -22,7 +22,7 @@ public interface PassengerService {
 
     PassengerResponse findById(Long id);
 
-    RegisteredPassengerResponse register(PassengerRegistrationRequest dto);
+    RegisteredPassengerResponse createPassenger(PassengerRegistrationRequest dto);
 
     void setPaymentTypeCash(Long id);
 

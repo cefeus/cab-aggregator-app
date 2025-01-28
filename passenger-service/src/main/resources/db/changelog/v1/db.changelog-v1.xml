@@ -18,5 +18,12 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
                      path="changeset/drop-passengers-table.sql"/>
         </rollback>
     </changeSet>
+    <changeSet id="3" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/change-payment-type-passengers-table.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
 
 </databaseChangeLog>

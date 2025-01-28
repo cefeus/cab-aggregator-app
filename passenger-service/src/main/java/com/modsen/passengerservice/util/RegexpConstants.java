@@ -1,10 +1,11 @@
 package com.modsen.passengerservice.util;
 
-import lombok.experimental.UtilityClass;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@UtilityClass
-public class RegexpConstants {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class RegexpConstants {
 
-    public final String PHONE_REGEXP = "^\\+375(17|29|33|44|25)[0-9]{3}[0-9]{2}[0-9]{2}$";
+    public static final String PHONE_REGEXP = "^\\+375(17|29|33|44|25)[0-9]{3}[0-9]{2}[0-9]{2}$";
 
 }

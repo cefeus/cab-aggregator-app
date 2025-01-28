@@ -5,7 +5,6 @@ import com.modsen.passengerservice.dto.request.PassengerRequest;
 import com.modsen.passengerservice.dto.response.PassengerResponse;
 import com.modsen.passengerservice.dto.response.RegisteredPassengerResponse;
 import com.modsen.passengerservice.model.Passenger;
-import org.mapstruct.BeanMapping;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,16 +18,17 @@ import java.util.List;
 @Mapper(
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         builder = @Builder(disableBuilder = true),
-        componentModel = MappingConstants.ComponentModel.SPRING
+        componentModel = MappingConstants.ComponentModel.SPRING,
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
 )
 public interface PassengerMapper {
 
-    Passenger toPassenger(PassengerRegistrationRequest passengerRequest);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Passenger toPassenger(PassengerRegistrationRequest passengerRequest);
 
     Passenger updatePassenger(PassengerRequest dto, @MappingTarget Passenger passenger);
 
+    @Mapping(expression = "java(PaymentType.castIntToPaymentType(passenger.getPaymentType()).get())", target = "paymentType")
     PassengerResponse toResponse(Passenger passenger);
 
     List<PassengerResponse> toList(List<Passenger> passengers);
