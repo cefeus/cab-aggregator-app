@@ -10,13 +10,13 @@ import static com.modsen.passengerservice.util.RegexpConstants.*;
 @Builder
 public record PassengerRegistrationRequest(
         @Pattern(regexp = PHONE_REGEXP,
-                message = "phone.incorrect.format")
+                message = "{phone.incorrect.format}")
         String phoneNumber,
-        @NotBlank(message = "firstName.not.blank")
-        @Size(min = 2, max = 100, message = "firstName.size")
+        @NotBlank(message = "{firstName.not.blank}")
+        @Size(min = 2, max = 100, message = "{firstName.size}")
         String firstName,
-        @NotBlank(message = "lastName.not.blank")
-        @Size(min = 2, max = 100, message = "lastName.size")
+        @NotBlank(message = "{lastName.not.blank}")
+        @Size(min = 2, max = 100, message = "{lastName.size}")
         String lastName
 ) {
 }

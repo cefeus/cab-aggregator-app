@@ -9,14 +9,14 @@ import lombok.Builder;
 
 @Builder
 public record PassengerRequest(
-        @NotBlank(message = "firstName.not.blank")
-        @Size(min = 2, max = 100, message = "firstName.size")
+        @NotBlank(message = "{firstName.not.blank}")
+        @Size(min = 2, max = 100, message = "{firstName.size}")
         String firstName,
-        @NotBlank(message = "lastName.not.blank")
-        @Size(min = 2, max = 100, message = "lastName.size")
+        @NotBlank(message = "{lastName.not.blank}")
+        @Size(min = 2, max = 100, message = "{lastName.size}")
         String lastName,
         @Nullable
-        @Email(message = "email.valid")
+        @Email(message = "{email.valid}")
         String email
 ) {
 }
