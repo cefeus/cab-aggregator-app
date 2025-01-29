@@ -1,19 +1,19 @@
 package com.modsen.passengerservice.model;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.Arrays;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public enum PaymentType {
 
-    CARD(1), CASH(2);
+    CARD(1),
+    CASH(2);
 
     private final int paymentCode;
 
-    PaymentType(int paymentCode) {
-        this.paymentCode = paymentCode;
-    }
-
-    public static Optional<PaymentType> castIntToPaymentType(int paymentCode) {
+    public static Optional<PaymentType> fromCode(int paymentCode) {
         return Arrays.stream(PaymentType.values())
                 .filter(p -> p.value() == paymentCode)
                 .findAny();

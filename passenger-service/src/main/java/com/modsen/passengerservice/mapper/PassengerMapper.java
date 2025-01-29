@@ -28,7 +28,6 @@ public interface PassengerMapper {
 
     Passenger updatePassenger(PassengerRequest dto, @MappingTarget Passenger passenger);
 
-    @Mapping(expression = "java(PaymentType.castIntToPaymentType(passenger.getPaymentType()).get())", target = "paymentType")
     PassengerResponse toResponse(Passenger passenger);
 
     List<PassengerResponse> toList(List<Passenger> passengers);

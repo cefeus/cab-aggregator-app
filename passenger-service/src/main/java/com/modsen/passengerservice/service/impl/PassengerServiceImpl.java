@@ -88,13 +88,13 @@ public class PassengerServiceImpl implements PassengerService {
     @Transactional
     public void setPaymentTypeCard(Long id) {
         var passenger = getOrThrow(id);
-        passenger.setPaymentType(PaymentType.CARD.value());
+        passenger.setPaymentType(PaymentType.CARD);
     }
 
     @Transactional
     public void setPaymentTypeCash(Long id) {
         var passenger = getOrThrow(id);
-        passenger.setPaymentType(PaymentType.CASH.value());
+        passenger.setPaymentType(PaymentType.CASH);
     }
 
     private Passenger getOrThrow(Long id) {

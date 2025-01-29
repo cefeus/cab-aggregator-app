@@ -1,6 +1,8 @@
 package com.modsen.passengerservice.model;
 
+import com.modsen.passengerservice.converter.PaymentTypeConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -47,8 +49,9 @@ public class Passenger {
     private String email;
     @Column(name="rating")
     private String rating;
+    @Convert(converter = PaymentTypeConverter.class)
     @Column(name ="payment_type")
-    private int paymentType;
+    private PaymentType paymentType;
     @Column(name = "is_active")
     Boolean isActive;
     @CreationTimestamp
