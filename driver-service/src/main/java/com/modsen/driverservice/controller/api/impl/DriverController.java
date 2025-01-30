@@ -59,13 +59,13 @@ public class DriverController implements DriverApiEndpoints {
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/free")
     public DriverResponse getAnyFreeDriver() {
         return service.findFirstFree();
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/add/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void addCar(@PathVariable Long id, @PathVariable String carNumber) {
         service.addCar(id, carNumber);
