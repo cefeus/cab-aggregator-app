@@ -8,8 +8,11 @@ import java.util.List;
 @Builder
 @Schema(description = "Data Transfer Object Page Response for Drivers")
 public record DriversPagedResponse(
+
         List<DriverResponse> drivers,
+
         Integer currentPage,
+
         Integer totalPages
 ) {
 }

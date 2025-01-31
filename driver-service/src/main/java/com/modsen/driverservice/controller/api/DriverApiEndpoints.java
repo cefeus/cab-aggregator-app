@@ -41,14 +41,14 @@ public interface DriverApiEndpoints {
     @Operation(description = "Retrieves drivers via id if it exists")
     DriverResponse findById(@PathVariable Long id);
 
-    @Operation(description = "Deletes driver via id if it exists")
-    void delete(@PathVariable Long id);
-
     @Operation(description = "Retrieves free drivers if it exists")
     DriverResponse getAnyFreeDriver();
 
     @Operation(description = "Adds new car to driver with provided data")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void addCar(@PathVariable Long id, @PathVariable String carNumber);
+
+    @Operation(description = "Deletes driver via id if it exists")
+    void delete(@PathVariable Long id);
 
 }

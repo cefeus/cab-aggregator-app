@@ -43,19 +43,26 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
     @Column(name ="phone")
     private String phone;
+
     @Column(name ="email")
     private String email;
+
     @Column(name ="rating")
     private String rating;
+
     @Convert(converter = DriverStatusConverter.class)
     @Column(name ="status")
     private DriverStatus status;
+
     @Convert(converter = SexConverter.class)
     @Column(name = "sex")
     private Sex sex;
@@ -72,6 +79,7 @@ public class Driver {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private Instant createdAt;
+
     @LastModifiedDate
     @Column(name = "modified_at")
     private Instant modifiedAt;

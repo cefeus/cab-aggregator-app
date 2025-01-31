@@ -13,10 +13,12 @@ public record CarRequest(
         @Size(min = 2, max = 100, message = "{carNumber.size}")
         @Schema(description = "Car number", example = "2484EC-7")
         String carNumber,
+
         @NotBlank(message = "{brand.not.blank}")
         @Size(min = 2, max = 100, message = "{brand.size}")
         @Schema(description = "Car brand", example = "Volkswagen")
         String brand,
+
         @NotBlank(message = "{color.not.blank}")
         @Size(min = 2, max = 100, message = "{color.size}")
         @Schema(description = "Car color", example = "Black")

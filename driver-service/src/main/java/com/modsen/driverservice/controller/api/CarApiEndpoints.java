@@ -39,10 +39,9 @@ public interface CarApiEndpoints {
     @Operation(description = "Retrieves car via id if it exists")
     CarResponse findById(@PathVariable Long id);
 
-    @Operation(description = "Deletes car via id if it exists")
-    void delete(@PathVariable Long id);
-
     @Operation(description = "Retrieves car via car number if it exists")
     CarResponse findByCarNumber(@PathVariable String number);
 
+    @Operation(description = "Deletes car via id if it exists")
+    void delete(@PathVariable Long id);
 }

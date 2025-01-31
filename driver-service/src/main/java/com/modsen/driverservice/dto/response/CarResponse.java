@@ -9,6 +9,7 @@ import java.util.List;
 
 @Schema(description = "Data Transfer Object Response for Car")
 public record CarResponse(
+
         Long id,
 
         String carNumber,
@@ -16,6 +17,7 @@ public record CarResponse(
         String brand,
 
         String color,
-        List<Long> drivers
+
+        List<Long> driverIds
 ) {
 }

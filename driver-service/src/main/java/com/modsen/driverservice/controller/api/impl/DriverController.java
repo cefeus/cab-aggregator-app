@@ -6,6 +6,7 @@ import com.modsen.driverservice.dto.request.DriverRequest;
 import com.modsen.driverservice.dto.response.DriverResponse;
 import com.modsen.driverservice.dto.response.DriversPagedResponse;
 import com.modsen.driverservice.service.DriverService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -28,12 +29,12 @@ public class DriverController implements DriverApiEndpoints {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DriverResponse createDriver(@RequestBody DriverRequest dto) {
+    public DriverResponse createDriver(@RequestBody @Valid DriverRequest dto) {
         return service.createDriver(dto);
     }
 
     @PutMapping("/{id}")
-    public DriverResponse updateDriver(@PathVariable Long id, @RequestBody DriverRequest dto) {
+    public DriverResponse updateDriver(@PathVariable Long id, @RequestBody @Valid DriverRequest dto) {
         return service.update(id, dto);
     }
 
@@ -52,12 +53,6 @@ public class DriverController implements DriverApiEndpoints {
         return service.findById(id);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
-    }
-
     @Override
     @GetMapping("/free")
     public DriverResponse getAnyFreeDriver() {
@@ -65,10 +60,16 @@ public class DriverController implements DriverApiEndpoints {
     }
 
     @Override
-    @GetMapping("/add/{id}")
+    @GetMapping("/add/{id}/{carNumber}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void addCar(@PathVariable Long id, @PathVariable String carNumber) {
         service.addCar(id, carNumber);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 
 }

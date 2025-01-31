@@ -9,7 +9,9 @@ import java.util.List;
 @Schema(description = "Data Transfer Object Page Response for Cars")
 public record CarsPagedResponse(
         List<CarResponse> cars,
+
         Integer currentPage,
+
         Integer totalPages
 ) {
 }

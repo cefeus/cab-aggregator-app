@@ -2,6 +2,7 @@ package com.modsen.driverservice.mapper;
 
 import com.modsen.driverservice.dto.request.DriverRequest;
 import com.modsen.driverservice.dto.response.DriverResponse;
+import com.modsen.driverservice.dto.response.DriversPagedResponse;
 import com.modsen.driverservice.model.Car;
 import com.modsen.driverservice.model.Driver;
 import org.mapstruct.BeanMapping;
@@ -14,6 +15,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Set;
@@ -32,14 +34,18 @@ public interface DriverMapper {
     @Mapping(target = "cars", ignore = true)
     Driver updateDriver(DriverRequest dto, @MappingTarget Driver driver);
 
-    @Mapping(target = "cars", source = "cars", qualifiedByName = "carsToIds")
+    @Mapping(target = "carIds", source = "cars", qualifiedByName = "carsToIds")
     DriverResponse toResponse(Driver driver);
 
+    @Named("mapDriversPage")
+    List<DriverResponse> toList(Page<Driver> drivers);
 
-    List<DriverResponse> toList(List<Driver> drivers);
+    @Mapping(target = "drivers", source = "responsePage", qualifiedByName = "mapDriversPage")
+    @Mapping(target = "totalPages", source = "responsePage.totalElements")
+    DriversPagedResponse mapDriversToPagedResponse(int currentPage, Page<Driver> responsePage);
 
     @Named(value = "toRegistered")
-    @Mapping(target = "cars", ignore = true)
+    @Mapping(target = "carIds", ignore = true)
     DriverResponse toRegistered(Driver driver);
 
     @Named("carsToIds")

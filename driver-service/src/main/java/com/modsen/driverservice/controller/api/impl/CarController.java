@@ -6,6 +6,7 @@ import com.modsen.driverservice.dto.request.CarRequest;
 import com.modsen.driverservice.dto.response.CarResponse;
 import com.modsen.driverservice.dto.response.CarsPagedResponse;
 import com.modsen.driverservice.service.CarService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -28,12 +29,12 @@ public class CarController implements CarApiEndpoints {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CarResponse createCar(@RequestBody CarRequest dto) {
+    public CarResponse createCar(@RequestBody @Valid CarRequest dto) {
         return service.createCar(dto);
     }
 
     @PutMapping("/{id}")
-    public CarResponse updateCar(@PathVariable Long id, @RequestBody CarRequest dto) {
+    public CarResponse updateCar(@PathVariable Long id, @RequestBody @Valid CarRequest dto) {
         return service.update(id, dto);
     }
 
@@ -52,15 +53,15 @@ public class CarController implements CarApiEndpoints {
         return service.findById(id);
     }
 
+    @GetMapping("/{number}")
+    public CarResponse findByCarNumber(@PathVariable String number) {
+        return service.findByCarNumber(number);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
-    }
-
-    @GetMapping("/{number}")
-    public CarResponse findByCarNumber(@PathVariable String number) {
-        return service.findByCarNumber(number);
     }
 
 }
