@@ -1,1 +1,1 @@
-drop table cars_drivers;
+DROP TABLE cars_drivers;

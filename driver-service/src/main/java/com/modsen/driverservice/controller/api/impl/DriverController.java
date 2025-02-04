@@ -61,7 +61,7 @@ public class DriverController implements DriverApiEndpoints {
 
     @Override
     @GetMapping("/{id}/add/{carNumber}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public void addCar(@PathVariable Long id, @PathVariable String carNumber) {
         service.addCar(id, carNumber);
     }

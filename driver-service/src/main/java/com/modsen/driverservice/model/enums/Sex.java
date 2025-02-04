@@ -15,11 +15,11 @@ public enum Sex {
 
     public static Optional<Sex> fromCode(int code) {
         return Arrays.stream(Sex.values())
-                .filter(s -> s.value() == code)
+                .filter(s -> s.getCode() == code)
                 .findAny();
     }
 
-    public int value() {
+    public int getCode() {
         return this.code;
     }
 

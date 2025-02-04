@@ -13,15 +13,15 @@ public enum DriverStatus {
     TAKEN(4),
     DELETED(0);
 
-    private final int statusCode;
+    private final int code;
 
     public static Optional<DriverStatus> fromCode(int statusCode) {
         return Arrays.stream(DriverStatus.values())
-                .filter(p -> p.value() == statusCode)
+                .filter(p -> p.getCode() == statusCode)
                 .findAny();
     }
 
-    public int value() {
-        return this.statusCode;
+    public int getCode() {
+        return this.code;
     }
 }
