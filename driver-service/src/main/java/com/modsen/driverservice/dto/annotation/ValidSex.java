@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = SexValidator.class)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Sex {
+public @interface ValidSex {
     String message() default "{}";
 
     Class<?>[] groups() default {};

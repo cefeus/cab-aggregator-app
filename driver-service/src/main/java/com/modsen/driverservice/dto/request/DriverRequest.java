@@ -1,7 +1,7 @@
 package com.modsen.driverservice.dto.request;
 
 
-import com.modsen.driverservice.dto.annotation.Sex;
+import com.modsen.driverservice.dto.annotation.ValidSex;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -35,7 +35,7 @@ public record DriverRequest(
         @Schema(description = "Driver's email", example = "petrov@gmail.com")
         String email,
 
-        @Sex(message = "{sex.valid}")
+        @ValidSex(message = "{sex.valid}")
         @NotBlank
         @Schema(description = "Drivers's sex", example = "MALE")
         String sex
