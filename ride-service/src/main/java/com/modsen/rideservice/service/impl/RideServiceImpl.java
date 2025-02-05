@@ -36,8 +36,8 @@ public class RideServiceImpl implements RideService {
     public RideResponse createRide(RideRequest request) {
         var ride = mapper.toEntity(request);
 
-        double price = 0;
-        price = priceService.calculatePrice(request.from(), request.to());
+
+        double price = priceService.calculatePrice(request.from(), request.to());
         ride.setPrice(price);
         ride.setRideStatus(RideStatus.STARTED);
         repository.save(ride);
