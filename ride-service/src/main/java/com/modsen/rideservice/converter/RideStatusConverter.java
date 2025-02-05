@@ -28,4 +28,5 @@ public class RideStatusConverter implements AttributeConverter<RideStatus, Integ
                 .findAny()
                 .orElseThrow(() -> new EnumConverterArgumentException(UNKNOWN_ARGUMENT.formatted(o)));
     }
+
 }

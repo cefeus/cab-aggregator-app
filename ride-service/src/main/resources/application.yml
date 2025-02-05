@@ -20,3 +20,6 @@ springdoc:
     path: /api/v1/rides/docs
   swagger-ui:
     path: /api/v1/rides/swagger-ui.html
+
+route:
+  api-key: ${apiKey:12a0fe62516a1234567896mke962254}

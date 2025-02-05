@@ -13,7 +13,12 @@ public class PriceServiceImpl implements PriceService {
 
     private final OSRMRouteService routeService;
     private final GeocodeService geocodeService;
+
     private final double PRICE_MULTIPLIER = 1.53;
+
+    private final double SIX_DIGIT_TRIM = 1000000.0;
+
+    private final long SECOND_IN_NANOS = 1_000_000_000L;
 
     @Override
     public double calculatePrice(String from, String to) {
@@ -29,13 +34,14 @@ public class PriceServiceImpl implements PriceService {
     }
 
     private double trimCoords(double numb) {
-        int temp = (int) (numb * 1000000.0);
-        double shortDouble = ((double) temp) / 1000000.0;
+        int temp = (int) (numb * SIX_DIGIT_TRIM);
+        double shortDouble = ((double) temp) / SIX_DIGIT_TRIM;
         return shortDouble;
     }
 
     private void addDelay() {
         long startTime = System.nanoTime();
-        while (System.nanoTime() - startTime < 1_000_000_000L) {}
+        while (System.nanoTime() - startTime < SECOND_IN_NANOS) {}
     }
+
 }

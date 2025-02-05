@@ -70,5 +70,4 @@ public class RideController implements RideApiEndpoints {
         service.delete(id);
     }
 
-
 }

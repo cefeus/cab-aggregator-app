@@ -9,18 +9,19 @@ import java.util.List;
 public record GeocodeResponse(
 
         @JsonProperty("place_id")
-         String placeId,
+        String placeId,
 
-         @JsonProperty("display_name")
-         String displayName,
+        @JsonProperty("display_name")
+        String displayName,
 
-         @JsonProperty("lat")
-         double lat,
+        @JsonProperty("lat")
+        double lat,
 
-         @JsonProperty("lon")
-         double lon,
+        @JsonProperty("lon")
+        double lon,
 
         @JsonProperty("boundingbox")
-         List<String> boundingBox
+        List<String> boundingBox
+
 ) {
 }

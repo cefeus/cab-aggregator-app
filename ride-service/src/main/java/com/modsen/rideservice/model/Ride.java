@@ -73,4 +73,5 @@ public class Ride {
     @LastModifiedDate
     @Column(name = "modified_at")
     private Instant modifiedAt;
+
 }

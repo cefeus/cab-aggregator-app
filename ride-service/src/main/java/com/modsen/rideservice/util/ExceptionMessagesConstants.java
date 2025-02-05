@@ -18,4 +18,5 @@ public final class ExceptionMessagesConstants {
     public static final String RIDE_STATUS_NOT_STARTED = "Can't set ride status to FINISHED. Current ride status isn't IN_PROGRESS, but %s";
 
     public static final String ROUTE_ARGUMENTS = "At least two coordinate pairs are required";
+
 }

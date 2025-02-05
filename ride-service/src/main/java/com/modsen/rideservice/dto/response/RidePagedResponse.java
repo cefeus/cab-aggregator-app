@@ -8,5 +8,6 @@ public record RidePagedResponse(
         Integer currentPage,
 
         Integer totalPages
+
 ) {
 }

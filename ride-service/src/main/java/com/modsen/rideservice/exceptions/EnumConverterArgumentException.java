@@ -5,4 +5,5 @@ public class EnumConverterArgumentException extends IllegalArgumentException {
     public EnumConverterArgumentException(String s) {
         super(s);
     }
+
 }

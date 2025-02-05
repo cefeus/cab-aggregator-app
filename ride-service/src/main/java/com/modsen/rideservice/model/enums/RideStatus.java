@@ -11,9 +11,9 @@ import java.util.Optional;
 public enum RideStatus {
 
     STARTED(0),
-    IN_PROGRESS(1),
-    FINISHED(2),
-    DELETED(3);
+    IN_PROGRESS(100),
+    FINISHED(200),
+    DELETED(300);
 
     private final int code;
 

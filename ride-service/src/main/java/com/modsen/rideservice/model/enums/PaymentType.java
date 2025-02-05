@@ -10,8 +10,8 @@ import java.util.Optional;
 @Getter
 public enum PaymentType {
 
-    CASH(1),
-    CARD(2);
+    CASH(100),
+    CARD(200);
 
     private final int code;
 

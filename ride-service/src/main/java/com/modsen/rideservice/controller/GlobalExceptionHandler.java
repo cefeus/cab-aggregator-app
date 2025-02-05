@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({
             EntityNotFoundException.class,
-    } )
+    })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleEntityNotFoundException(EntityNotFoundException ex) {
         val exceptionId = UUID.randomUUID().toString();
@@ -56,7 +56,9 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(
+            MethodArgumentNotValidException.class
+    )
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         val exceptionId = UUID.randomUUID().toString();

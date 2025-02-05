@@ -17,4 +17,5 @@ public class UuidConverter implements AttributeConverter<String, UUID> {
     public String convertToEntityAttribute(UUID uuid) {
         return uuid.toString();
     }
+
 }

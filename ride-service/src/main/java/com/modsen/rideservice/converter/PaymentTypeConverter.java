@@ -12,7 +12,6 @@ import static com.modsen.rideservice.util.ExceptionMessagesConstants.UNKNOWN_ARG
 @Converter
 public class PaymentTypeConverter implements AttributeConverter<PaymentType, Integer> {
 
-
     @Override
     public Integer convertToDatabaseColumn(PaymentType paymentType) {
         return Arrays.stream(PaymentType.values())
@@ -29,4 +28,5 @@ public class PaymentTypeConverter implements AttributeConverter<PaymentType, Int
                 .findAny()
                 .orElseThrow(() -> new EnumConverterArgumentException(UNKNOWN_ARGUMENT.formatted(o)));
     }
+
 }

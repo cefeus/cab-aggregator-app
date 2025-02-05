@@ -36,7 +36,6 @@ public class RideServiceImpl implements RideService {
     public RideResponse createRide(RideRequest request) {
         var ride = mapper.toEntity(request);
 
-
         double price = priceService.calculatePrice(request.from(), request.to());
         ride.setPrice(price);
         ride.setRideStatus(RideStatus.STARTED);
@@ -71,6 +70,7 @@ public class RideServiceImpl implements RideService {
     }
 
     @Transactional
+    @Override
     public void updateRideStatusFinished(Long id) {
         var ride = getOrThrow(id);
         var status = ride.getRideStatus();
@@ -82,6 +82,7 @@ public class RideServiceImpl implements RideService {
     }
 
     @Transactional
+    @Override
     public void updateRideStatusInProgress(Long id) {
         var ride = getOrThrow(id);
         var status = ride.getRideStatus();
@@ -93,6 +94,7 @@ public class RideServiceImpl implements RideService {
     }
 
     @Transactional
+    @Override
     public void delete(Long id) {
         var ride = getOrThrow(id);
         ride.setRideStatus(RideStatus.DELETED);
@@ -102,4 +104,5 @@ public class RideServiceImpl implements RideService {
         return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(RIDE_NOT_FOUND_BY_ID.formatted(id)));
     }
+
 }

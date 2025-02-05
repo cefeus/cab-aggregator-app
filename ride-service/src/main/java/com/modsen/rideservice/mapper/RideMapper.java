@@ -44,4 +44,5 @@ public interface RideMapper {
     default UUID mapToUUID(String str) {
         return UUID.fromString(str);
     }
+
 }
