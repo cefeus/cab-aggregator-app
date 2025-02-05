@@ -1,0 +1,19 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+    <changeSet id="d250bbad-e876-475c-9532-119a98bb6bf4" author="anastasya-prylskaya">
+        <tagDatabase tag="db_init" />
+    </changeSet>
+
+    <include file="v1/db.accumulate-changelog-v1.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="21a8594f-1e3c-49fc-a3e8-a89e48125544" author="anastasya-prylskaya">
+        <tagDatabase tag="v-1.0"/>
+    </changeSet>
+
+</databaseChangeLog>

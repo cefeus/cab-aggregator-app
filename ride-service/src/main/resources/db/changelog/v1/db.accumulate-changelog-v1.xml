@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="20d44f3c-dbdd-4f10-8f46-6227cc4b1388" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/create-rides-table.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"
+        />
+        <rollback>
+            <sqlFile dbms = "postgres"
+                     relativeToChangelogFile="true"
+                     splitStatements="true"
+                     stripComments="true"
+                     path="changeset/drop-rides-table.sql"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
