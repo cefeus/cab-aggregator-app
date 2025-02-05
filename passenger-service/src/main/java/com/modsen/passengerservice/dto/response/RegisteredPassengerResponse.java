@@ -8,6 +8,7 @@ import lombok.Builder;
 @Schema(description = "Data Transfer Object Response for Registered Passenger")
 public record RegisteredPassengerResponse(
         Long id,
+        String uuid,
         String firstName,
         String lastName,
         String phoneNumber,

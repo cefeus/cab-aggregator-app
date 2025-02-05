@@ -46,4 +46,12 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
                      path="changeset/drop-passengers-table.sql"/>
         </rollback>
     </changeSet>
+    <changeSet id="264923f6-4d43-4642-abf5-1ed15dbd16d1" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/add-uuid-field-passenger.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>
