@@ -60,4 +60,13 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
         />
     </changeSet>
 
+    <changeSet id="b2d180a8-6d77-5223-91e0-d8f39b0b2064" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/add-uuid-field-car-and-driver.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"
+        />
+    </changeSet>
+
 </databaseChangeLog>

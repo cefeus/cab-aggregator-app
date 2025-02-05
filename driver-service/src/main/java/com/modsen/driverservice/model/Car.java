@@ -1,6 +1,8 @@
 package com.modsen.driverservice.model;
 
+import com.modsen.driverservice.converter.UuidConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +39,10 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Convert(converter = UuidConverter.class)
+    @Column(name = "uuid_id", nullable = false)
+    private String uuid;
 
     @Column(name = "car_number", nullable = false)
     private String carNumber;

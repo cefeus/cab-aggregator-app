@@ -11,6 +11,8 @@ public record DriverResponse(
 
         Long id,
 
+        String uuid,
+
         String phone,
 
         String email,

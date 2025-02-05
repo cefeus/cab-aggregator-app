@@ -2,6 +2,7 @@ package com.modsen.driverservice.model;
 
 import com.modsen.driverservice.converter.DriverStatusConverter;
 import com.modsen.driverservice.converter.SexConverter;
+import com.modsen.driverservice.converter.UuidConverter;
 import com.modsen.driverservice.model.enums.DriverStatus;
 import com.modsen.driverservice.model.enums.Sex;
 import jakarta.persistence.Column;
@@ -43,6 +44,10 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Convert(converter = UuidConverter.class)
+    @Column(name = "uuid_id", nullable = false)
+    private String uuid;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
