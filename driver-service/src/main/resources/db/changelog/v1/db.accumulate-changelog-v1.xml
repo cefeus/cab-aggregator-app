@@ -1,0 +1,63 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="3abcd798-081b-41e5-83c8-e5eb14cba0f6" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/create-cars-table.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"
+        />
+        <rollback>
+            <sqlFile dbms = "postgres"
+                     relativeToChangelogFile="true"
+                     splitStatements="true"
+                     stripComments="true"
+                     path="changeset/drop-cars-table.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="b56e6dc5-c6b4-4f75-8ee1-46722f49bb6f" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/create-drivers-table.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"
+        />
+        <rollback>
+            <sqlFile dbms = "postgres"
+                     relativeToChangelogFile="true"
+                     splitStatements="true"
+                     stripComments="true"
+                     path="changeset/drop-drivers-table.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="b2d189a8-6d77-4323-91e0-d8f28b0b2064" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/create-car-driver-table.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"
+        />
+        <rollback>
+            <sqlFile dbms = "postgres"
+                     relativeToChangelogFile="true"
+                     splitStatements="true"
+                     stripComments="true"
+                     path="changeset/drop-car-driver-table.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="b2d189a8-6d77-4323-91e0-d8f39b0b2064" author="anastasya_prylskaya">
+        <sqlFile dbms = "postgresql"
+                 path="changeset/add-constraint-car-driver.sql"
+                 splitStatements="true"
+                 stripComments="true"
+                 relativeToChangelogFile="true"
+        />
+    </changeSet>
+
+</databaseChangeLog>
