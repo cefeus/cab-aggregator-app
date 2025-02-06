@@ -1,6 +1,7 @@
 package com.modsen.passengerservice.model;
 
 import com.modsen.passengerservice.converter.PaymentTypeConverter;
+import com.modsen.passengerservice.converter.UuidConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -39,24 +40,37 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
+
+    @Convert(converter = UuidConverter.class)
+    @Column(name = "uuid_id", nullable = false)
+    private String uuid;
+
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
     @Column(name ="email")
     private String email;
+
     @Column(name="rating")
     private String rating;
+
     @Convert(converter = PaymentTypeConverter.class)
     @Column(name ="payment_type")
     private PaymentType paymentType;
+
     @Column(name = "is_active")
     Boolean isActive;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private Instant createdAt;
+
     @LastModifiedDate
     @Column(name = "modified_at")
     private Instant modifiedAt;

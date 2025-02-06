@@ -1,3 +1,4 @@
 rootProject.name = 'cab-aggregator-app'
 include 'driver-service'
 include 'passenger-service'
+include 'ride-service'

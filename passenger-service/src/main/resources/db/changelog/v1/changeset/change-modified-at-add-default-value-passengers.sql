@@ -1,2 +1,2 @@
 ALTER TABLE passengers
-    ALTER COLUMN modified_at SET default CURRENT_TIMESTAMP;
+    ALTER COLUMN modified_at SET DEFAULT CURRENT_TIMESTAMP;

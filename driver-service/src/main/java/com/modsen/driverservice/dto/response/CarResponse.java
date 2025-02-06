@@ -12,6 +12,8 @@ public record CarResponse(
 
         Long id,
 
+        String uuid,
+
         String carNumber,
 
         String brand,
