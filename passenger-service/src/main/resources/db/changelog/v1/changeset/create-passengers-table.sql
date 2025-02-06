@@ -5,9 +5,9 @@ CREATE TABLE passengers
     last_name    TEXT      NOT NULL,
     phone_number TEXT      NOT NULL,
     email        TEXT,
-    rating       TEXT      NOT NULL default 5.0,
-    is_active    boolean   NOT NULL default true,
-    payment_type TEXT               default 'CASH',
+    rating       TEXT      NOT NULL DEFAULT 5.0,
+    is_active    BOOLEAN   NOT NULL DEFAULT true,
+    payment_type TEXT               DEFAULT 'CASH',
     created_at   TIMESTAMP NOT NULL,
     modified_at  TIMESTAMP NOT NULL
 );
